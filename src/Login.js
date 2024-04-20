@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -15,41 +15,61 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you can add your login logic
-    console.log('Email:', email);
+    console.log('Username:', username);
     console.log('Password:', password);
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-header">Login</div>
-            <div className="card-body">
+    <div className="container-fluid">
+      <div className="flex text-center text-success mt-5 mb-1">
+        <img className="card-img-top mx-auto d-block" src="logo.svg" style={{ width: "120px" }} alt="logo" />
+        <h2>System</h2>
+      </div>
+      <div className="container d-flex align-items-center justify-content-center">
+        {/* Login error message */}
+        {/* The card Start */}
+        <div className="card" style={{ width: "380px" }}>
+          <div className="card-body">
+            <h5 className="card-title text-center text-primary">
+              <strong className="text-warning">Login</strong>
+            </h5>
+            <div className="p-1 text-align-center justify-content-center">
               <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">Email</label>
+                <div className="form-group mb-1">
+                  <label htmlFor="username">
+                    <strong>Username:</strong>
+                  </label>
                   <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={handleEmailChange}
+                    type="text"
+                    id="username"
+                    className="form-control form-control-sm"
+                    placeholder="Johndoe"
+                    value={username}
+                    onChange={handleUsernameChange}
                     required
                   />
+                  <span className="invalid-feedback"></span>
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">Password</label>
+                <div className="form-group mb-3">
+                  <label htmlFor="password">
+                    <strong>Password:</strong>
+                  </label>
                   <input
                     type="password"
-                    className="form-control"
                     id="password"
+                    className="form-control form-control-sm"
+                    placeholder="********"
                     value={password}
                     onChange={handlePasswordChange}
                     required
                   />
+                  <span className="invalid-feedback"></span>
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <div className="d-grid g-2 mx-auto">
+                  <button type="submit" className="text-center btn btn-primary">
+                    Login
+                  </button>
+                </div>
               </form>
             </div>
           </div>
